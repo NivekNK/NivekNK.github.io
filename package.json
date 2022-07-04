@@ -1,25 +1,29 @@
 {
     "name": "nivek-homepage",
     "version": "1.0.0",
-    "description": "> ✨ Bootstrapped with Create Snowpack App (CSA).",
-    "main": "index.js",
+    "description": "Nivek's website",
     "scripts": {
         "start": "snowpack dev",
         "build": "snowpack build",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "next dev -H 0.0.0.0",
+        "prettier": "prettier --write \"src/**/*.{js,jsx}\"",
+        "lint": "next lint"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/NivekNK/NivekNK.github.io.git"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": "Kevin Rojas<nivek@nk>",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/NivekNK/NivekNK.github.io/issues"
     },
     "homepage": "https://github.com/NivekNK/NivekNK.github.io#readme",
     "devDependencies": {
+        "eslint": "^8.19.0",
+        "eslint-config-next": "^12.2.0",
+        "prettier": "^2.7.1",
         "snowpack": "^3.8.8"
     },
     "dependencies": {
