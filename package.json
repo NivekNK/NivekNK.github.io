@@ -1,0 +1,34 @@
+{
+    "name": "nivek-homepage",
+    "version": "1.0.0",
+    "description": "> ✨ Bootstrapped with Create Snowpack App (CSA).",
+    "main": "index.js",
+    "scripts": {
+        "start": "snowpack dev",
+        "build": "snowpack build",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/NivekNK/NivekNK.github.io.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/NivekNK/NivekNK.github.io/issues"
+    },
+    "homepage": "https://github.com/NivekNK/NivekNK.github.io#readme",
+    "devDependencies": {
+        "snowpack": "^3.8.8"
+    },
+    "dependencies": {
+        "@chakra-ui/react": "^2.2.1",
+        "@emotion/react": "^11.9.3",
+        "@emotion/styled": "^11.9.3",
+        "framer-motion": "^6.3.16",
+        "next": "^12.2.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    }
+}
