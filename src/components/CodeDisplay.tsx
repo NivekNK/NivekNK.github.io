@@ -1,5 +1,4 @@
 import React from "react"
-import { Card } from 'react-bootstrap'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import py from 'react-syntax-highlighter/dist/esm/languages/hljs/python'
 import { monokaiSublime as style } from 'react-syntax-highlighter/dist/esm/styles/hljs'
@@ -7,7 +6,7 @@ import { monokaiSublime as style } from 'react-syntax-highlighter/dist/esm/style
 SyntaxHighlighter.registerLanguage('python', py)
 
 const CODE =
-`def insertionSort(arr):
+  `def insertionSort(arr):
   for i in range(1, len(arr)):
     key = arr[i]
     j = i - 1
@@ -41,25 +40,21 @@ export default class CodeDisplay extends React.Component<IProps, INumberArray> {
   render(): React.ReactNode {
     const { array } = this.state
     return (
-      <Card bg='dark'>
-        <Card.Body>
-          <SyntaxHighlighter
-            language='python'
-            style={style}
-            wrapLines={true}
-            showLineNumbers={true}
-            lineProps={lineNumber => {
-              let style: any = { display: 'block' };
-              if (array.includes(lineNumber)) {
-                style.backgroundColor = '#471e36';
-              } 
-              return { style };
-            }}
-          >
-            {CODE}
-          </SyntaxHighlighter>
-        </Card.Body>
-      </Card>
+      <SyntaxHighlighter
+        language='python'
+        style={style}
+        wrapLines={true}
+        showLineNumbers={true}
+        lineProps={lineNumber => {
+          let style: any = { display: 'block' };
+          if (array.includes(lineNumber)) {
+            style.backgroundColor = '#610c0c';
+          }
+          return { style };
+        }}
+      >
+        {CODE}
+      </SyntaxHighlighter>
     )
   }
 }
