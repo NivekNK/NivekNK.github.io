@@ -13,3 +13,7 @@ export function GetWindowSize(): [number, number] {
 
   return [width, height]
 }
+
+export function Timeout(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
