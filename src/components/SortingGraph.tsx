@@ -1,4 +1,5 @@
 import React from "react"
+import { Sort } from './Sort'
 import { GetWindowSize } from "../utilities/Utils"
 import '../styles/SortingGraph.css'
 
@@ -37,6 +38,13 @@ export default class SortingGraph extends React.Component<IProps, INumberArray> 
 
     this.setState({
       array: array
+    })
+  }
+
+  sort(type: string): void {
+    let { array } = this.state
+    this.setState({
+      array: Sort(array, type)
     })
   }
 
