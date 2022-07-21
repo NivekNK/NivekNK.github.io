@@ -6,8 +6,9 @@ interface IProps { }
 
 interface INumberArray {
   array: number[],
-  i: number,
-  j: number
+  drawArray: number[],
+  j: number,
+  i: number
 }
 
 export default class SortingGraph extends React.Component<IProps, INumberArray> {
@@ -16,8 +17,9 @@ export default class SortingGraph extends React.Component<IProps, INumberArray> 
 
     this.state = {
       array: [],
-      i: -1,
-      j: -1
+      drawArray: [],
+      j: -1,
+      i: -1
     }
   }
 
@@ -41,16 +43,18 @@ export default class SortingGraph extends React.Component<IProps, INumberArray> 
 
     this.setState({
       array: aux,
-      i: -1,
-      j: -1
+      drawArray: aux,
+      j: -1,
+      i: -1
     })
   }
 
-  setArrayState(arr: number[], i: number, j: number): void {
+  setArrayState(arr: number[], drawArray: number[], j: number, i: number): void {
     this.setState({
       array: arr,
-      i: i,
-      j: j
+      drawArray: drawArray,
+      j: j,
+      i: i
     })
   }
 
@@ -64,37 +68,49 @@ export default class SortingGraph extends React.Component<IProps, INumberArray> 
       of their current position */
       while (j >= 0 && arr[j] > key) {
         arr[j + 1] = arr[j];
+        let drawArray: number[] = [...arr]
+        drawArray[j + 1] = key
+        this.setArrayState(arr, drawArray, j + 1, i)
         j = j - 1;
-        this.setArrayState(arr, i, j)
         await Timeout(100)
       }
       arr[j + 1] = key;
-      this.setArrayState(arr, i, j)
+      this.setArrayState(arr, [...arr], j, i)
       await Timeout(100)
     }
+
+    this.setArrayState(arr, arr, -1, -1)
   }
 
-  async finalSort(arr: number[]): Promise<void> {
+  async finalSort(arr: number[], type: string): Promise<void> {
     return await this.insertionSort(arr)
   }
 
   sort(type: string): void {
     let { array } = this.state
-    this.finalSort(array)
+    this.finalSort(array, type)
   }
 
-  getColor(index: number, i: number, j: number): string {
-    return index === i || index === j ? 'red' : 'gray'
+  getColor(index: number, j: number, i: number): string {
+    if (i === -1 || j === -1)
+      return 'gray'
+
+    if (index === i && index === j)
+      return 'green'
+    else if (index === j)
+      return 'red'
+    else
+      return 'gray'
   }
 
   render(): React.ReactNode {
-    const { array, i, j } = this.state
+    const { drawArray, j, i } = this.state
     return (
       <>
-        {array.map((value: number, index: number) => (
+        {drawArray.map((value: number, index: number) => (
           <div className="array-bar"
             key={index}
-            style={{ width: `${value}px`, backgroundColor: this.getColor(index, i, j) }}
+            style={{ width: `${value}px`, backgroundColor: this.getColor(index, j, i) }}
           ></div>
         ))}
       </>

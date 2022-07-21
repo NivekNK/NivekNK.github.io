@@ -1,3 +1,3 @@
-https://nivek.me/
-https://nivek.me/about
-https://nivek.me/sorting-visualizer
+https://nivek.me/?/
+https://nivek.me/?/about
+https://nivek.me/?/sorting-visualizer
